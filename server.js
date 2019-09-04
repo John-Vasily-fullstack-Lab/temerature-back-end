@@ -1,8 +1,6 @@
 require('dotenv').config();
 require('./lib/utils/connect')();
-const subscribe = require('./lib/utils/tempSubscriber');
-
-subscribe();
+const request = require('superagent');
 
 const app = require('./lib/app');
 
@@ -12,3 +10,11 @@ app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Started on ${PORT}`);
 });
+  
+request
+  .post('http://temp.alchemycodelab.io/subscribe')
+  .send({ url: 'https://temp-joe-vasily.herokuapp.com' })
+  .then(res => {
+    console.log(res.body);
+  });
+
