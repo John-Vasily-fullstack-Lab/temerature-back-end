@@ -1,5 +1,8 @@
 require('dotenv').config();
 require('./lib/utils/connect')();
+const subscribe = require('./lib/utils/tempSubscriber');
+
+subscribe();
 
 const app = require('./lib/app');
 
